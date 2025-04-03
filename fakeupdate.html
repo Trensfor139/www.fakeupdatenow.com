@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Windows Update</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+
+        .fullscreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .update-box {
+            width: 80%;
+            height: 50px;
+            border: 3px solid #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen">
+        <div class="update-box">
+            <p>Windows is updating... Do not turn off your computer.</p>
+        </div>
+    </div>
+
+    <script>
+        // Zablokovanie klávesových skratiek
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "F11" || e.key === "F4" || e.key === "W") {
+                e.preventDefault();
+            }
+        });
+
+        // Prechádzanie do fullscreen režimu
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+            document.documentElement.msRequestFullscreen();
+        }
+
+        // Časovač (3 hodiny)
+        setTimeout(function() {
+            alert("You can now exit.");
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document
+
